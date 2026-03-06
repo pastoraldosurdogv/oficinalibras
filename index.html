@@ -40,12 +40,32 @@
     padding: 0.7rem 2rem;
     box-shadow: 0 2px 12px rgba(0,0,0,.25);
   }
+  nav .logo-area {
+    display: flex; align-items: center; gap: .75rem;
+  }
+  nav .logo-area img {
+    height: 48px; width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--yellow);
+    background: #fff;
+  }
   nav .logo-text {
     font-size: 1rem; font-weight: 900; color: var(--white);
     line-height: 1.2;
   }
   nav .logo-text span { color: var(--yellow); }
-  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
+  nav .insta-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff; font-size: .8rem; font-weight: 800;
+    padding: .35rem 1rem; border-radius: 2rem;
+    text-decoration: none; letter-spacing: .03em;
+    transition: opacity .2s, transform .2s;
+    white-space: nowrap;
+  }
+  nav .insta-btn:hover { opacity: .85; transform: scale(1.05); }
   nav ul a {
     color: #d4f5d4; font-size: 0.85rem; font-weight: 700;
     text-decoration: none; text-transform: uppercase; letter-spacing: .05em;
@@ -326,13 +346,19 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo-text">Pastoral do Surdo<br><span>Governador Valadares</span></div>
+  <div class="logo-area">
+    <img src="logopastoral.jpg"
+         alt="Logo Pastoral do Surdo"
+         onerror="this.style.display='none'">
+    <div class="logo-text">Pastoral do Surdo<br><span>Governador Valadares</span></div>
+  </div>
   <ul>
     <li><a href="#libras">Libras</a></li>
     <li><a href="#porque">Por que fazer</a></li>
     <li><a href="#curso">O Curso</a></li>
     <li><a href="#professora">Professora</a></li>
     <li><a href="#contato">Contato</a></li>
+    <li><a href="https://www.instagram.com/pastoraldosurdo_gv" target="_blank" rel="noopener" class="insta-btn">📸 Instagram</a></li>
   </ul>
 </nav>
 
@@ -340,7 +366,13 @@
 <section id="hero">
   <div class="hero-badge animate">📋 Inscrições Abertas</div>
   <h1 class="animate delay-1">Oficina de<br><em>Libras Básica</em></h1>
-  <p class="sub animate delay-2">Aprenda a Língua Brasileira de Sinais e abra portas para a comunicação inclusiva com a comunidade surda de Governador Valadares.</p>
+  <p class="sub animate delay-2">Aprenda a Língua Brasileira de Sinais e abra portas para a comunicação inclusiva com a comunidade surda.</p>
+
+  <a href="https://www.instagram.com/pastoraldosurdo_gv" target="_blank" rel="noopener"
+     class="animate delay-2"
+     style="display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; font-weight:800; font-size:.9rem; padding:.5rem 1.4rem; border-radius:2rem; text-decoration:none; margin-bottom:1.5rem; box-shadow:0 4px 15px rgba(0,0,0,.3);">
+    📸 Siga-nos: @pastoraldosurdo_gv
+  </a>
 
   <div class="cta-box animate delay-3">
     <h2>✍️ Faça sua inscrição</h2>
@@ -454,7 +486,7 @@
     <p style="color:#c8e6c9; margin-bottom: 2rem;">Ajude a divulgar a oficina — quanto mais pessoas aprenderem Libras, mais inclusiva nossa cidade se torna.</p>
     <div class="flyer-wrap">
       <!-- Coloque aqui o flyer da oficina quando disponível -->
-      <img src="/mnt/user-data/uploads/Screenshot_20260306-091409_WhatsApp__1_.jpg"
+      <img src="flyerpastoral.jpg"
            alt="Flyer da Oficina de Libras – Pastoral do Surdo"
            onerror="this.style.display='none'; document.getElementById('flyer-placeholder').style.display='flex';">
     </div>
@@ -542,36 +574,56 @@
     <span class="section-label">Fale Conosco</span>
     <h2 class="section-title">Coordenadores <span style="color:#a5d6a7;">Responsáveis</span></h2>
     <p style="color:#c8e6c9; max-width:540px; line-height:1.7;">Tem dúvidas sobre a oficina, datas, inscrições ou mais informações? Entre em contato diretamente com os coordenadores da Pastoral do Surdo.</p>
+    <p style="margin-top:1rem;">
+      <a href="https://www.instagram.com/pastoraldosurdo_gv" target="_blank" rel="noopener"
+         style="display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,214,0,.15); border:1.5px solid rgba(255,214,0,.4); color:#ffd600; font-weight:800; font-size:.95rem; padding:.6rem 1.3rem; border-radius:2rem; text-decoration:none; transition:background .2s;"
+         onmouseover="this.style.background='rgba(255,214,0,.25)'" onmouseout="this.style.background='rgba(255,214,0,.15)'">
+        📸 @pastoraldosurdo_gv no Instagram
+      </a>
+    </p>
 
     <div class="contato-grid">
       <!-- COORDENADOR 1 -->
       <div class="contact-card">
-        <div class="avatar">📞</div>
+        <div class="avatar">🙋</div>
         <h4>Daniel Pessoa Costa</h4>
-        <div class="role">Coordenação Local – Pastoral do Surdo GV - Ouvinte</div>
-        <a href="tel:+55XXXXXXXXXX">
-          <span class="ph">📞</span>
-          <!-- Substitua pelo telefone real -->
-          (XX) XXXXX-XXXX
+        <div class="role">Coordenação Local – Pastoral do Surdo GV · Ouvinte</div>
+        <a href="tel:+5533988540009">
+          <span class="ph">📞</span> (33) 98854-0009
         </a>
-        <a href="https://wa.me/55XXXXXXXXXX" target="_blank" rel="noopener">
+        <a href="https://wa.me/5533988540009" target="_blank" rel="noopener">
           <span class="ph">💬</span> WhatsApp
         </a>
       </div>
 
-      <!-- COORDENADOR 2 – adicione quantos precisar -->
+      <!-- COORDENADORA 2 -->
       <div class="contact-card">
-        <div class="avatar">📞</div>
+        <div class="avatar">🙋‍♀️</div>
         <h4>Maria do Alívio</h4>
-        <div class="role">Coordenação Local – Pastoral do Surdo GV - Ouvinte</div>
-        <a href="tel:+55XXXXXXXXXX">
-          <span class="ph">📞</span>
-          (XX) XXXXX-XXXX
+        <div class="role">Coordenação Local – Pastoral do Surdo GV · Ouvinte</div>
+        <a href="tel:+5577981218616">
+          <span class="ph">📞</span> (77) 98121-8616
+        </a>
+        <a href="https://wa.me/5577981218616" target="_blank" rel="noopener">
+          <span class="ph">💬</span> WhatsApp
         </a>
       </div>
 
-     
-  
+      <!-- INSTRUTORA -->
+      <div class="contact-card">
+        <div class="avatar">👩‍🏫</div>
+        <h4>Patrícia Del Papa Pedra</h4>
+        <div class="role">Instrutora de Libras · <span style="color:#ffe082;">🦻 Surda</span></div>
+        <a href="tel:+5533998783863">
+          <span class="ph">📞</span> (33) 99878-3863
+        </a>
+        <a href="https://wa.me/5533998783863" target="_blank" rel="noopener">
+          <span class="ph">💬</span> WhatsApp
+        </a>
+        <p style="font-size:.75rem; color:#a5d6a7; margin-top:.5rem; line-height:1.4;">
+          💡 Patrícia é surda — prefira contato via WhatsApp com mensagem de texto ou vídeo em Libras.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -580,6 +632,12 @@
 <footer>
   <p>© 2026 <strong>Pastoral do Surdo – Governador Valadares/MG</strong></p>
   <p style="margin-top:.4rem;">Paróquia Nossa Senhora de Lourdes · Feito com 🤟 para a comunidade surda</p>
+  <p style="margin-top:.8rem;">
+    <a href="https://www.instagram.com/pastoraldosurdo_gv" target="_blank" rel="noopener"
+       style="color:#ffd600; font-weight:800; text-decoration:none; font-size:.95rem; display:inline-flex; align-items:center; gap:.4rem;">
+      📸 Siga-nos no Instagram: @pastoraldosurdo_gv
+    </a>
+  </p>
 </footer>
 
 <script>
