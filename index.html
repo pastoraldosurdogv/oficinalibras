@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oficina de Libras Básica – Pastoral do Surdo GV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #4caf50;
+    --green-dark: #2e7d32;
+    --green-light: #a5d6a7;
+    --yellow: #ffd600;
+    --yellow-light: #fff9c4;
+    --orange: #ff8f00;
+    --white: #ffffff;
+    --off-white: #f9fbe7;
+    --gray: #555;
+    --dark: #1b2120;
+    --purple: #6a1b9a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--green-dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.7rem 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  nav .logo-text {
+    font-size: 1rem; font-weight: 900; color: var(--white);
+    line-height: 1.2;
+  }
+  nav .logo-text span { color: var(--yellow); }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; }
+  nav ul a {
+    color: #d4f5d4; font-size: 0.85rem; font-weight: 700;
+    text-decoration: none; text-transform: uppercase; letter-spacing: .05em;
+    transition: color .2s;
+  }
+  nav ul a:hover { color: var(--yellow); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--green-dark) 0%, #1b5e20 60%, #0a3d10 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 7rem 1.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(255,214,0,.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(76,175,80,.15) 0%, transparent 50%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark); font-weight: 800; font-size: .8rem;
+    text-transform: uppercase; letter-spacing: .15em;
+    padding: .35rem 1.2rem; border-radius: 2rem;
+    margin-bottom: 1.5rem; position: relative;
+  }
+  #hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 1rem; position: relative;
+  }
+  #hero h1 em {
+    font-style: normal; color: var(--yellow);
+  }
+  #hero p.sub {
+    color: #c8e6c9; font-size: 1.15rem; max-width: 540px; margin: 0 auto 2rem;
+    line-height: 1.7; position: relative;
+  }
+
+  /* INSCRICAO CTA */
+  .cta-box {
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,214,0,.4);
+    border-radius: 1.2rem;
+    padding: 2rem 2.5rem;
+    max-width: 560px; width: 100%;
+    margin: 0 auto;
+    position: relative;
+    backdrop-filter: blur(8px);
+  }
+  .cta-box h2 {
+    color: var(--yellow); font-size: 1.4rem; font-weight: 900; margin-bottom: .5rem;
+  }
+  .cta-box p { color: #e8f5e9; font-size: .95rem; margin-bottom: 1.2rem; }
+
+  /* ── PLACEHOLDER GOOGLE FORMS ── */
+  .forms-placeholder {
+    width: 100%; min-height: 180px;
+    background: rgba(255,255,255,.07);
+    border: 2px dashed rgba(255,214,0,.5);
+    border-radius: .8rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: .5rem;
+    color: #ffe082; font-size: .9rem; font-weight: 700; text-align: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background .3s;
+  }
+  .forms-placeholder .icon { font-size: 2rem; }
+  .forms-placeholder small { color: #a5d6a7; font-weight: 600; font-size: .78rem; display: block; margin-top: .3rem; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-block;
+    background: var(--green);
+    color: #fff; font-weight: 800; font-size: .75rem;
+    text-transform: uppercase; letter-spacing: .15em;
+    padding: .3rem 1rem; border-radius: 2rem; margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--green-dark); line-height: 1.2; margin-bottom: 1.2rem;
+  }
+  h2.section-title span { color: var(--orange); }
+
+  /* ── O QUE É LIBRAS ── */
+  #libras {
+    background: var(--white);
+  }
+  .libras-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  }
+  .libras-grid .text p {
+    color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem;
+  }
+  .libras-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .libras-card {
+    background: var(--off-white);
+    border-left: 4px solid var(--green);
+    border-radius: .8rem; padding: 1.2rem;
+  }
+  .libras-card .emoji { font-size: 2rem; margin-bottom: .5rem; }
+  .libras-card h4 { font-size: .95rem; font-weight: 800; color: var(--green-dark); margin-bottom: .3rem; }
+  .libras-card p { font-size: .82rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── POR QUE FAZER ── */
+  #porque { background: linear-gradient(135deg, #e8f5e9 0%, #f9fbe7 100%); }
+  .reasons-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .reason-card {
+    background: var(--white);
+    border-radius: 1.2rem; padding: 1.8rem;
+    box-shadow: 0 4px 20px rgba(46,125,50,.1);
+    border-top: 4px solid var(--green);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .reason-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(46,125,50,.18); }
+  .reason-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: var(--green-light); line-height: 1; margin-bottom: .5rem;
+  }
+  .reason-card h3 { font-size: 1rem; font-weight: 800; color: var(--green-dark); margin-bottom: .5rem; }
+  .reason-card p { font-size: .88rem; color: var(--gray); line-height: 1.6; }
+
+  /* ── FLYER ── */
+  #flyer { background: var(--green-dark); text-align: center; }
+  #flyer h2.section-title { color: var(--yellow); }
+  #flyer .section-label { background: var(--yellow); color: var(--dark); }
+  .flyer-wrap {
+    margin-top: 2rem;
+    display: flex; justify-content: center;
+  }
+  .flyer-wrap img {
+    max-width: 420px; width: 100%;
+    border-radius: 1.2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    border: 4px solid var(--yellow);
+  }
+
+  /* ── PROFESSORA ── */
+  #professora { background: var(--white); }
+  .prof-grid {
+    display: grid; grid-template-columns: 320px 1fr; gap: 3.5rem; align-items: center;
+  }
+  .prof-photo-wrap {
+    position: relative;
+  }
+  .prof-photo-wrap::before {
+    content: '';
+    position: absolute; inset: -12px;
+    background: linear-gradient(135deg, var(--green), var(--yellow));
+    border-radius: 1.5rem; z-index: 0;
+  }
+  .prof-photo-wrap img {
+    position: relative; z-index: 1;
+    width: 100%; border-radius: 1.2rem;
+    object-fit: cover; aspect-ratio: 3/4;
+    display: block;
+  }
+  .prof-photo-wrap .badge-years {
+    position: absolute; bottom: -1rem; right: -1rem; z-index: 2;
+    background: var(--yellow); color: var(--dark);
+    font-weight: 900; font-size: .85rem;
+    padding: .6rem 1rem; border-radius: .8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+    line-height: 1.2; text-align: center;
+  }
+  .prof-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; color: var(--green-dark); margin-bottom: .3rem;
+  }
+  .prof-text .subtitle { color: var(--green); font-weight: 800; font-size: 1rem; margin-bottom: 1.2rem; }
+  .prof-text p { color: var(--gray); line-height: 1.8; margin-bottom: 1rem; font-size: .98rem; }
+  .prof-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .prof-tags span {
+    background: #e8f5e9; color: var(--green-dark);
+    font-size: .78rem; font-weight: 700; padding: .3rem .9rem;
+    border-radius: 2rem; border: 1.5px solid var(--green-light);
+  }
+
+  /* ── CURSO ── */
+  #curso { background: linear-gradient(135deg, #e8f5e9 0%, #f9fbe7 100%); }
+  .curso-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .curso-info {
+    background: var(--white);
+    border-radius: 1rem; padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(46,125,50,.1);
+    border-bottom: 4px solid var(--green);
+  }
+  .curso-info .icon { font-size: 2.2rem; margin-bottom: .7rem; }
+  .curso-info h4 { font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--gray); margin-bottom: .3rem; }
+  .curso-info p { font-size: 1.1rem; font-weight: 900; color: var(--green-dark); }
+
+  /* ── CONTATO ── */
+  #contato { background: var(--green-dark); color: var(--white); }
+  #contato h2.section-title { color: var(--yellow); }
+  #contato .section-label { background: var(--yellow); color: var(--dark); }
+  .contato-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .contact-card {
+    background: rgba(255,255,255,.08);
+    border: 1.5px solid rgba(255,255,255,.15);
+    border-radius: 1.2rem; padding: 1.8rem;
+    transition: background .3s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,.14); }
+  .contact-card .avatar {
+    width: 56px; height: 56px;
+    background: var(--yellow); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1rem;
+  }
+  .contact-card h4 { font-weight: 900; font-size: 1.05rem; margin-bottom: .2rem; }
+  .contact-card .role { font-size: .8rem; color: #a5d6a7; font-weight: 700; margin-bottom: .8rem; }
+  .contact-card a {
+    display: flex; align-items: center; gap: .5rem;
+    color: #c8e6c9; font-size: .9rem; font-weight: 700;
+    text-decoration: none; padding: .4rem 0;
+    transition: color .2s;
+  }
+  .contact-card a:hover { color: var(--yellow); }
+  .contact-card a .ph { font-size: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a2e0a;
+    color: #a5d6a7; text-align: center;
+    padding: 2rem 1.5rem; font-size: .83rem;
+  }
+  footer strong { color: var(--yellow); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .libras-grid { grid-template-columns: 1fr; }
+    .prof-grid { grid-template-columns: 1fr; }
+    .prof-photo-wrap { max-width: 280px; margin: 0 auto; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp .7s ease both; }
+  .delay-1 { animation-delay: .15s; }
+  .delay-2 { animation-delay: .3s; }
+  .delay-3 { animation-delay: .45s; }
+
+  /* Decorative hand signs top */
+  .hands-deco {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    font-size: 2.5rem; letter-spacing: 1rem; opacity: .25;
+    pointer-events: none; user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-text">Pastoral do Surdo<br><span>Governador Valadares</span></div>
+  <ul>
+    <li><a href="#libras">Libras</a></li>
+    <li><a href="#porque">Por que fazer</a></li>
+    <li><a href="#curso">O Curso</a></li>
+    <li><a href="#professora">Professora</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge animate">📋 Inscrições Abertas</div>
+  <h1 class="animate delay-1">Oficina de<br><em>Libras Básica</em></h1>
+  <p class="sub animate delay-2">Aprenda a Língua Brasileira de Sinais e abra portas para a comunicação inclusiva com a comunidade surda de Governador Valadares.</p>
+
+  <div class="cta-box animate delay-3">
+    <h2>✍️ Faça sua inscrição</h2>
+    <p>Preencha o formulário abaixo para garantir sua vaga na próxima turma.</p>
+
+    <!-- ════════════════════════════════════════════════════
+         ⬇️  COLE AQUI O LINK DO SEU GOOGLE FORMS
+         Substitua o src abaixo pelo link de incorporação
+         do seu formulário (Arquivo > Publicar > Incorporar)
+    ════════════════════════════════════════════════════ -->
+    <div class="forms-placeholder" id="forms-placeholder">
+      <div class="icon">📝</div>
+      <div>
+        <strong>Seu Google Forms aparecerá aqui</strong>
+        <small>Substitua esta área pelo código de incorporação do seu formulário.<br>
+        No Google Forms: Enviar → &lt;/&gt; → copie o código iframe e cole no lugar deste bloco.</small>
+      </div>
+    </div>
+    <!-- Exemplo de como ficará após inserir o Forms:
+    <iframe src="https://docs.google.com/forms/d/e/SEU_ID_AQUI/viewform?embedded=true"
+      width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
+      style="border-radius:.6rem">Carregando…</iframe>
+    -->
+  </div>
+
+  <div class="hands-deco">🤟 👐 🤙 🖐️ ✌️</div>
+</section>
+
+<!-- O QUE É LIBRAS -->
+<section id="libras">
+  <div class="container">
+    <div class="libras-grid">
+      <div class="text">
+        <span class="section-label">Língua de Sinais</span>
+        <h2 class="section-title">O que é <span>Libras?</span></h2>
+        <p>Libras é a <strong>Língua Brasileira de Sinais</strong>, reconhecida como meio legal de comunicação e expressão no Brasil pela Lei nº 10.436/2002 e regulamentada pelo Decreto nº 5.626/2005.</p>
+        <p>É uma língua completa, com gramática própria, estrutura visual-gestual e capaz de expressar qualquer ideia, emoção ou conceito — assim como qualquer outra língua natural humana.</p>
+        <p>No Brasil, estima-se que mais de <strong>10 milhões de pessoas</strong> têm algum grau de surdez. A Libras é a principal língua da comunidade surda brasileira e aprendê-la é um ato de <strong>amor, inclusão e respeito</strong>.</p>
+      </div>
+      <div class="libras-visual">
+        <div class="libras-card">
+          <div class="emoji">🏛️</div>
+          <h4>Lei nº 10.436/2002</h4>
+          <p>Libras reconhecida como língua oficial da comunidade surda brasileira.</p>
+        </div>
+        <div class="libras-card">
+          <div class="emoji">🌍</div>
+          <h4>Língua natural</h4>
+          <p>Desenvolvida organicamente pela comunidade surda, com gramática completa.</p>
+        </div>
+        <div class="libras-card">
+          <div class="emoji">👁️</div>
+          <h4>Canal visual-gestual</h4>
+          <p>Usa mãos, expressões faciais e corporais para a comunicação.</p>
+        </div>
+        <div class="libras-card">
+          <div class="emoji">🤝</div>
+          <h4>10 milhões de surdos</h4>
+          <p>Uma comunidade expressiva que merece comunicação plena e digna.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE FAZER -->
+<section id="porque">
+  <div class="container">
+    <span class="section-label">Motivação</span>
+    <h2 class="section-title">Por que fazer a <span>Oficina de Libras?</span></h2>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="num">01</div>
+        <h3>Inclusão que transforma</h3>
+        <p>Comunicar-se com surdos quebra barreiras invisíveis e constrói pontes de humanidade. Você passa a ser presença, não apenas espectador.</p>
+      </div>
+      <div class="reason-card">
+        <div class="num">02</div>
+        <h3>Diferencial profissional</h3>
+        <p>Profissionais de saúde, educação, comércio e serviços públicos que conhecem Libras atendem melhor e se destacam no mercado de trabalho.</p>
+      </div>
+      <div class="reason-card">
+        <div class="num">03</div>
+        <h3>Missão da fé</h3>
+        <p>Na Pastoral do Surdo, Libras é instrumento de evangelização e acolhimento. Aprender é participar de uma missão de amor concreto.</p>
+      </div>
+      <div class="reason-card">
+        <div class="num">04</div>
+        <h3>Crescimento pessoal</h3>
+        <p>Aprender uma nova língua expande a cognição, desenvolve empatia e amplia sua forma de ver e sentir o mundo ao redor.</p>
+      </div>
+      <div class="reason-card">
+        <div class="num">05</div>
+        <h3>Comunidade e vínculos</h3>
+        <p>A oficina reúne pessoas dispostas a aprender juntas — um espaço de troca, amizade e crescimento coletivo.</p>
+      </div>
+      <div class="reason-card">
+        <div class="num">06</div>
+        <h3>90 horas de imersão</h3>
+        <p>Uma carga horária significativa, com certificação reconhecida pela Pastoral do Surdo de Governador Valadares/MG.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLYER -->
+<section id="flyer">
+  <div class="container">
+    <span class="section-label">Material de Divulgação</span>
+    <h2 class="section-title">Compartilhe!</h2>
+    <p style="color:#c8e6c9; margin-bottom: 2rem;">Ajude a divulgar a oficina — quanto mais pessoas aprenderem Libras, mais inclusiva nossa cidade se torna.</p>
+    <div class="flyer-wrap">
+      <!-- Coloque aqui o flyer da oficina quando disponível -->
+      <img src="/mnt/user-data/uploads/Screenshot_20260306-091409_WhatsApp__1_.jpg"
+           alt="Flyer da Oficina de Libras – Pastoral do Surdo"
+           onerror="this.style.display='none'; document.getElementById('flyer-placeholder').style.display='flex';">
+    </div>
+    <div id="flyer-placeholder" style="display:none; justify-content:center; align-items:center; flex-direction:column; gap:1rem; min-height:280px; border: 2px dashed rgba(255,214,0,.4); border-radius:1.2rem; color:#ffe082; font-weight:700; margin-top:2rem;">
+      <div style="font-size:3rem;">🖼️</div>
+      <div>Insira aqui a imagem do flyer da oficina</div>
+      <small style="color:#a5d6a7; font-weight:600;">Substitua o caminho da imagem no código HTML</small>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSORA -->
+<section id="professora">
+  <div class="container">
+    <span class="section-label">Instrutora</span>
+    <h2 class="section-title">Conheça a <span>Professora</span></h2>
+    <div class="prof-grid" style="margin-top:2.5rem;">
+      <div class="prof-photo-wrap">
+        <img src="/mnt/user-data/uploads/Foto_de_Daniel_Pessoa.jpg"
+             alt="Patrícia Del Papa Pedra"
+             onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' viewBox=\'0 0 300 400\'><rect fill=\'%234caf50\' width=\'300\' height=\'400\'/><text fill=\'white\' font-size=\'80\' text-anchor=\'middle\' x=\'150\' y=\'220\'>👩‍🏫</text></svg>'">
+        <div class="badge-years">Instrutora<br>de Libras</div>
+      </div>
+      <div class="prof-text">
+        <h3>Patrícia Del Papa Pedra</h3>
+        <div class="subtitle">Instrutora da Oficina de Libras Básica</div>
+        <p>Patrícia Del Papa Pedra é a instrutora responsável pela Oficina de Libras Básica promovida pela <strong>Pastoral do Surdo de Governador Valadares</strong>, vinculada à Paróquia Nossa Senhora de Lourdes.</p>
+        <p>Com experiência no ensino da Língua Brasileira de Sinais, Patrícia conduz os participantes por um percurso cuidadoso e afetivo de aprendizado, tornando o contato com Libras uma experiência transformadora e acessível a todos.</p>
+        <p>Sua didática valoriza a prática, a empatia com a comunidade surda e o encantamento pela língua — ingredientes que fazem cada aula uma descoberta.</p>
+        <div class="prof-tags">
+          <span>🤟 Libras</span>
+          <span>📚 Didática inclusiva</span>
+          <span>🙌 Pastoral do Surdo</span>
+          <span>🏫 Governador Valadares</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O CURSO -->
+<section id="curso">
+  <div class="container">
+    <span class="section-label">Detalhes do Curso</span>
+    <h2 class="section-title">A <span>Oficina</span></h2>
+    <p style="color:var(--gray); max-width:580px; line-height:1.7;">Tudo o que você precisa saber para se inscrever e aproveitar ao máximo essa experiência única de aprendizado e inclusão.</p>
+    <div class="curso-grid">
+      <div class="curso-info">
+        <div class="icon">⏱️</div>
+        <h4>Carga Horária</h4>
+        <p>90 horas</p>
+      </div>
+      <div class="curso-info">
+        <div class="icon">📜</div>
+        <h4>Certificado</h4>
+        <p>Sim, ao final</p>
+      </div>
+      <div class="curso-info">
+        <div class="icon">📍</div>
+        <h4>Local</h4>
+        <p>Paróquia N. Sra. de Lourdes · Governador Valadares/MG</p>
+      </div>
+      <div class="curso-info">
+        <div class="icon">👐</div>
+        <h4>Nível</h4>
+        <p>Básico – sem pré-requisitos</p>
+      </div>
+      <div class="curso-info">
+        <div class="icon">🏛️</div>
+        <h4>Promovido por</h4>
+        <p>Pastoral do Surdo GV</p>
+      </div>
+      <div class="curso-info">
+        <div class="icon">✅</div>
+        <h4>Vagas</h4>
+        <p>Limitadas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <span class="section-label">Fale Conosco</span>
+    <h2 class="section-title">Coordenadores <span style="color:#a5d6a7;">Responsáveis</span></h2>
+    <p style="color:#c8e6c9; max-width:540px; line-height:1.7;">Tem dúvidas sobre a oficina, datas, inscrições ou mais informações? Entre em contato diretamente com os coordenadores da Pastoral do Surdo.</p>
+
+    <div class="contato-grid">
+      <!-- COORDENADOR 1 -->
+      <div class="contact-card">
+        <div class="avatar">🙋</div>
+        <h4>Daniel Pessoa Costa</h4>
+        <div class="role">Coordenação Local – Pastoral do Surdo GV</div>
+        <a href="tel:+55XXXXXXXXXX">
+          <span class="ph">📞</span>
+          <!-- Substitua pelo telefone real -->
+          (XX) XXXXX-XXXX
+        </a>
+        <a href="https://wa.me/55XXXXXXXXXX" target="_blank" rel="noopener">
+          <span class="ph">💬</span> WhatsApp
+        </a>
+      </div>
+
+      <!-- COORDENADOR 2 – adicione quantos precisar -->
+      <div class="contact-card">
+        <div class="avatar">✝️</div>
+        <h4>Pe. José Ordean Alves dos Santos, CSSp</h4>
+        <div class="role">Pároco – Paróquia Nossa Senhora de Lourdes</div>
+        <a href="tel:+55XXXXXXXXXX">
+          <span class="ph">📞</span>
+          (XX) XXXXX-XXXX
+        </a>
+      </div>
+
+      <!-- Paróquia -->
+      <div class="contact-card">
+        <div class="avatar">⛪</div>
+        <h4>Paróquia Nossa Senhora de Lourdes</h4>
+        <div class="role">Governador Valadares – MG</div>
+        <a href="tel:+55XXXXXXXXXX">
+          <span class="ph">📞</span>
+          (XX) XXXX-XXXX
+        </a>
+        <a href="#" target="_blank">
+          <span class="ph">📍</span> Ver no mapa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Pastoral do Surdo – Governador Valadares/MG</strong></p>
+  <p style="margin-top:.4rem;">Paróquia Nossa Senhora de Lourdes · Feito com 🤟 para a comunidade surda</p>
+</footer>
+
+<script>
+  // Simple scroll-triggered animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.reason-card, .curso-info, .contact-card, .libras-card').forEach((el, i) => {
+          el.style.animation = `fadeUp 0.6s ease ${i * 0.1}s both`;
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
